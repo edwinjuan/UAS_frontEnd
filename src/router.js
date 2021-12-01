@@ -18,6 +18,18 @@ const router = new VueRouter({
             component: importComponent('Login'),
         },
         {
+            path: '/homepage',
+            name: 'Homepage',
+            meta: { title: 'Homepage' },
+            component: importComponent('Homepage'),
+        },
+        {
+            path: '/profile',
+            name: 'Profile',
+            meta: { title: 'Profile' },
+            component: importComponent('Profile'),
+        },
+        {
             path: '*',
             redirect: '/'
         },
