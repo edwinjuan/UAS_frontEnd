@@ -128,9 +128,9 @@ export default {
                     this.snackbar = true;
                     this.load = false;
                     this.clear();
-                    // this.$router.push({
-                    //     name: 'Dashboard',
-                    // });
+                    this.$router.push({
+                        name: 'Homepage',
+                    });
                 }).catch(error => {
                     this.error_message = error.response.data.message;
                     this.color = "red";
