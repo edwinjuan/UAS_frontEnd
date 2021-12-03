@@ -10,13 +10,39 @@
           large
           left
       >
-        mdi-twitter
+        mdi-post
       </v-icon>
       <span class="text-h6 font-weight-light">{{ username }}</span>
     </v-card-title>
 
     <v-card-text class="text-h5 font-weight-bold"> {{ postContent }}</v-card-text>
+    <v-row
+        class="m-4"
+        align="center"
+        justify="end"
+    >
+      <v-col>
+        <v-icon class="mr-1">
+          mdi-heart
+        </v-icon>
+      </v-col>
+      <v-col>
+        <span class="subheading mr-2">256</span>
+      </v-col>
+      <v-col>
+        <v-icon class="mr-1">mdi-comment</v-icon>
+      </v-col>
 
+      <v-col>
+        <span class="subheading">45</span>
+      </v-col>
+      <v-col>
+        <v-icon class="mr-1">
+          mdi-share-variant
+        </v-icon>
+      </v-col>
+    </v-row>
+<!--    comment   -->
     <v-list-item
         v-for="(comment, i) in this.comments"
         :key="i"

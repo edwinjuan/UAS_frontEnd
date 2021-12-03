@@ -13,22 +13,6 @@
         <v-list-item-title>{{ username }}}</v-list-item-title>
       </v-list-item-content>
       <v-card-text class="text-h5 font-weight-bold"> {{ comment }}</v-card-text>
-      <v-row
-          align="center"
-          justify="end"
-      >
-        <v-icon class="mr-1">
-          mdi-heart
-        </v-icon>
-        <span class="subheading mr-2">256</span>
-        <span class="mr-1">·</span>
-        <v-icon class="mr-1">
-          mdi-share-variant
-        </v-icon>
-        <span class="subheading">45</span>
-      </v-row>
-
-
     </v-list-item>
   </v-card-actions>
 </template>
