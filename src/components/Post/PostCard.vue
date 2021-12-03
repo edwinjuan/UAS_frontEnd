@@ -3,14 +3,14 @@
       class="mx-auto"
       color="#26c6da"
       dark
-      max-width="500"
+      max-width="700"
   >
     <v-card-title>
       <v-icon
           large
           left
       >
-        mdi-post
+        mdi-account-circle
       </v-icon>
       <span class="text-h6 font-weight-light">{{ username }}</span>
     </v-card-title>
