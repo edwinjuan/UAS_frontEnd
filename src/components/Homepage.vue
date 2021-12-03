@@ -68,7 +68,6 @@
     <v-list-item
         v-for="(post, i) in this.posts"
         :key="i"
-        link
     >
       <v-list-item-content>
         <PostCard
@@ -78,180 +77,6 @@
         ></PostCard>
       </v-list-item-content>
     </v-list-item>
-
-
-    <!--      <v-container fluid fill-height class="posisinya">-->
-    <!--            <v-layout flex align-center justify>-->
-    <!--                <v-col>-->
-
-    <!--                <v-card-->
-    <!--                class="mx-auto"-->
-    <!--                color="#26c6da"-->
-    <!--                dark-->
-    <!--                max-width="500"-->
-    <!--                >-->
-    <!--                <v-card-title>-->
-    <!--                <v-icon-->
-    <!--                    large-->
-    <!--                    left-->
-    <!--                >-->
-    <!--                    mdi-twitter-->
-    <!--                </v-icon>-->
-    <!--                <span class="text-h6 font-weight-light">Twitter</span>-->
-    <!--                </v-card-title>-->
-
-    <!--                <v-card-text class="text-h5 font-weight-bold">-->
-    <!--                "Turns1 out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well."-->
-    <!--                </v-card-text>-->
-
-    <!--                <v-card-actions>-->
-    <!--                <v-list-item class="grow">-->
-    <!--                    <v-list-item-avatar color="grey darken-3">-->
-    <!--                    <v-img-->
-    <!--                        class="elevation-6"-->
-    <!--                        alt=""-->
-    <!--                        src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"-->
-    <!--                    ></v-img>-->
-    <!--                    </v-list-item-avatar>-->
-
-    <!--                    <v-list-item-content>-->
-    <!--                    <v-list-item-title>Evan You</v-list-item-title>-->
-    <!--                    </v-list-item-content>-->
-
-    <!--                    <v-row-->
-    <!--                    align="center"-->
-    <!--                    justify="end"-->
-    <!--                    >-->
-    <!--                    <v-icon class="mr-1">-->
-    <!--                        mdi-heart-->
-    <!--                    </v-icon>-->
-    <!--                    <span class="subheading mr-2">256</span>-->
-    <!--                    <span class="mr-1">·</span>-->
-    <!--                    <v-icon class="mr-1">-->
-    <!--                        mdi-share-variant-->
-    <!--                    </v-icon>-->
-    <!--                    <span class="subheading">45</span>-->
-    <!--                    </v-row>-->
-    <!--                    -->
-    <!--                    -->
-    <!--                </v-list-item>-->
-    <!--                </v-card-actions>-->
-    <!--            </v-card>-->
-    <!--                <v-card-->
-    <!--                class="mx-auto"-->
-    <!--                color="#26c6da"-->
-    <!--                dark-->
-    <!--                max-width="500"-->
-    <!--                >-->
-    <!--                <v-card-title>-->
-    <!--                <v-icon-->
-    <!--                    large-->
-    <!--                    left-->
-    <!--                >-->
-    <!--                    mdi-twitter-->
-    <!--                </v-icon>-->
-    <!--                <span class="text-h6 font-weight-light">Twitter</span>-->
-    <!--                </v-card-title>-->
-
-    <!--                <v-card-text class="text-h5 font-weight-bold">-->
-    <!--                "Turns2 out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well."-->
-    <!--                </v-card-text>-->
-
-    <!--                <v-card-actions>-->
-    <!--                <v-list-item class="grow">-->
-    <!--                    <v-list-item-avatar color="grey darken-3">-->
-    <!--                    <v-img-->
-    <!--                        class="elevation-6"-->
-    <!--                        alt=""-->
-    <!--                        src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"-->
-    <!--                    ></v-img>-->
-    <!--                    </v-list-item-avatar>-->
-
-    <!--                    <v-list-item-content>-->
-    <!--                    <v-list-item-title>Evan You</v-list-item-title>-->
-    <!--                    </v-list-item-content>-->
-
-    <!--                    <v-row-->
-    <!--                    align="center"-->
-    <!--                    justify="end"-->
-    <!--                    >-->
-    <!--                    <v-icon class="mr-1">-->
-    <!--                        mdi-heart-->
-    <!--                    </v-icon>-->
-    <!--                    <span class="subheading mr-2">256</span>-->
-    <!--                    <span class="mr-1">·</span>-->
-    <!--                    <v-icon class="mr-1">-->
-    <!--                        mdi-share-variant-->
-    <!--                    </v-icon>-->
-    <!--                    <span class="subheading">45</span>-->
-    <!--                    </v-row>-->
-    <!--                    -->
-    <!--                    -->
-    <!--                </v-list-item>-->
-    <!--                </v-card-actions>-->
-    <!--            </v-card>-->
-
-    <!--                <v-card-->
-    <!--                class="mx-auto mt-4"-->
-    <!--                color="#26c6da"-->
-    <!--                dark-->
-    <!--                max-width="500"-->
-    <!--                >-->
-    <!--                <v-card-title>-->
-    <!--                <v-icon-->
-    <!--                    large-->
-    <!--                    left-->
-    <!--                >-->
-    <!--                    mdi-twitter-->
-    <!--                </v-icon>-->
-    <!--                <span class="text-h6 font-weight-light">Twitter</span>-->
-    <!--                </v-card-title>-->
-
-    <!--                <v-card-text class="text-h5 font-weight-bold">-->
-    <!--                "Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well."-->
-    <!--                </v-card-text>-->
-
-    <!--                <v-card-actions>-->
-    <!--                <v-list-item class="grow">-->
-    <!--                    <v-list-item-avatar color="grey darken-3">-->
-    <!--                    <v-img-->
-    <!--                        class="elevation-6"-->
-    <!--                        alt=""-->
-    <!--                        src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"-->
-    <!--                    ></v-img>-->
-    <!--                    </v-list-item-avatar>-->
-
-    <!--                    <v-list-item-content>-->
-    <!--                    <v-list-item-title>Evan You</v-list-item-title>-->
-    <!--                    </v-list-item-content>-->
-
-    <!--                    <v-row-->
-    <!--                    align="center"-->
-    <!--                    justify="end"-->
-    <!--                    >-->
-    <!--                    <v-icon class="mr-1">-->
-    <!--                        mdi-heart-->
-    <!--                    </v-icon>-->
-    <!--                    <span class="subheading mr-2">256</span>-->
-    <!--                    <span class="mr-1">·</span>-->
-    <!--                    <v-icon class="mr-1">-->
-    <!--                        mdi-share-variant-->
-    <!--                    </v-icon>-->
-    <!--                    <span class="subheading">45</span>-->
-    <!--                    </v-row>-->
-    <!--                    -->
-    <!--                    -->
-    <!--                </v-list-item>-->
-    <!--                </v-card-actions>-->
-    <!--            </v-card>-->
-
-    <!--            -->
-
-    <!--                </v-col>-->
-    <!--            </v-layout>-->
-    <!--      </v-container>-->
-
-
   </main>
 </template>
 
@@ -284,9 +109,28 @@ export default {
       posts: [
         {
           id: 1,
-          post_content: "Hello ini contoh post pertama",
+          post_content: "Hello ini contoh post pertama " +
+              "banyak hal yang harus dikerjakan " +
+              "bersama Tuhan kita pasti bisa. " +
+              "Amiinn.",
           user_id: 1,
           comments: [
+            {
+              user_id: "Thomas Shelby",
+              content: "good post!"
+            },
+            {
+              user_id: "Jane Doe",
+              content: "great!"
+            },
+            {
+              user_id: "Thomas Shelby",
+              content: "good post!"
+            },
+            {
+              user_id: "Jane Doe",
+              content: "great!"
+            },
             {
               user_id: "Thomas Shelby",
               content: "good post!"
@@ -307,6 +151,42 @@ export default {
           id: 3,
           post_content: "Hello ini contoh post ketiga",
           user_id: 2,
+          comments: [
+            {
+              user_id: "Thomas Shelby",
+              content: "good post!"
+            },
+            {
+              user_id: "Jane Doe",
+              content: "great!"
+            },
+          ],
+        },
+        {
+          id: 4,
+          post_content: "Hello ini contoh post pertama",
+          user_id: 4,
+          comments: [
+            {
+              user_id: "Thomas Shelby",
+              content: "good post!"
+            },
+            {
+              user_id: "Jane Doe",
+              content: "great!"
+            },
+          ],
+        },
+        {
+          id: 5,
+          post_content: "Hello ini contoh post kedua",
+          user_id: 2,
+          comments: [],
+        },
+        {
+          id: 6,
+          post_content: "Hello ini contoh post ketiga",
+          user_id: 3,
           comments: [
             {
               user_id: "Thomas Shelby",
