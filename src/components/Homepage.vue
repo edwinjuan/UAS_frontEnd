@@ -1,7 +1,7 @@
 <template>
   <main>
 
-    <v-app-bar color="amber" darken-2>
+    <v-app-bar color="amber" darken- style="height: 80px">
 
       <v-spacer></v-spacer>
 
@@ -71,7 +71,7 @@
     >
       <v-list-item-content>
         <PostCard
-            v-bind:username="post.user_id"
+            v-bind:username="post.name"
             v-bind:post-content="post.post_content"
             v-bind:comments="post.comments"
         ></PostCard>
@@ -106,99 +106,101 @@ export default {
       namaFollowers: [],
       idUser: '',
       idPar: '',
-      posts: [
-        {
-          id: 1,
-          post_content: "Hello ini contoh post pertama " +
-              "banyak hal yang harus dikerjakan " +
-              "bersama Tuhan kita pasti bisa. " +
-              "Amiinn.",
-          user_id: 1,
-          comments: [
-            {
-              user_id: "Thomas Shelby",
-              content: "good post!"
-            },
-            {
-              user_id: "Jane Doe",
-              content: "great!"
-            },
-            {
-              user_id: "Thomas Shelby",
-              content: "good post!"
-            },
-            {
-              user_id: "Jane Doe",
-              content: "great!"
-            },
-            {
-              user_id: "Thomas Shelby",
-              content: "good post!"
-            },
-            {
-              user_id: "Jane Doe",
-              content: "great!"
-            },
-          ],
-        },
-        {
-          id: 2,
-          post_content: "Hello ini contoh post kedua",
-          user_id: 2,
-          comments: [],
-        },
-        {
-          id: 3,
-          post_content: "Hello ini contoh post ketiga",
-          user_id: 2,
-          comments: [
-            {
-              user_id: "Thomas Shelby",
-              content: "good post!"
-            },
-            {
-              user_id: "Jane Doe",
-              content: "great!"
-            },
-          ],
-        },
-        {
-          id: 4,
-          post_content: "Hello ini contoh post pertama",
-          user_id: 4,
-          comments: [
-            {
-              user_id: "Thomas Shelby",
-              content: "good post!"
-            },
-            {
-              user_id: "Jane Doe",
-              content: "great!"
-            },
-          ],
-        },
-        {
-          id: 5,
-          post_content: "Hello ini contoh post kedua",
-          user_id: 2,
-          comments: [],
-        },
-        {
-          id: 6,
-          post_content: "Hello ini contoh post ketiga",
-          user_id: 3,
-          comments: [
-            {
-              user_id: "Thomas Shelby",
-              content: "good post!"
-            },
-            {
-              user_id: "Jane Doe",
-              content: "great!"
-            },
-          ],
-        },
-      ],
+      posts:[],
+      comments: [],
+      // posts: [
+      //   {
+      //     id: 1,
+      //     post_content: "Hello ini contoh post pertama " +
+      //         "banyak hal yang harus dikerjakan " +
+      //         "bersama Tuhan kita pasti bisa. " +
+      //         "Amiinn.",
+      //     user_id: 1,
+      //     comments: [
+      //       {
+      //         user_id: "Thomas Shelby",
+      //         content: "good post!"
+      //       },
+      //       {
+      //         user_id: "Jane Doe",
+      //         content: "great!"
+      //       },
+      //       {
+      //         user_id: "Thomas Shelby",
+      //         content: "good post!"
+      //       },
+      //       {
+      //         user_id: "Jane Doe",
+      //         content: "great!"
+      //       },
+      //       {
+      //         user_id: "Thomas Shelby",
+      //         content: "good post!"
+      //       },
+      //       {
+      //         user_id: "Jane Doe",
+      //         content: "great!"
+      //       },
+      //     ],
+      //   },
+      //   {
+      //     id: 2,
+      //     post_content: "Hello ini contoh post kedua",
+      //     user_id: 2,
+      //     comments: [],
+      //   },
+      //   {
+      //     id: 3,
+      //     post_content: "Hello ini contoh post ketiga",
+      //     user_id: 2,
+      //     comments: [
+      //       {
+      //         user_id: "Thomas Shelby",
+      //         content: "good post!"
+      //       },
+      //       {
+      //         user_id: "Jane Doe",
+      //         content: "great!"
+      //       },
+      //     ],
+      //   },
+      //   {
+      //     id: 4,
+      //     post_content: "Hello ini contoh post pertama",
+      //     user_id: 4,
+      //     comments: [
+      //       {
+      //         user_id: "Thomas Shelby",
+      //         content: "good post!"
+      //       },
+      //       {
+      //         user_id: "Jane Doe",
+      //         content: "great!"
+      //       },
+      //     ],
+      //   },
+      //   {
+      //     id: 5,
+      //     post_content: "Hello ini contoh post kedua",
+      //     user_id: 2,
+      //     comments: [],
+      //   },
+      //   {
+      //     id: 6,
+      //     post_content: "Hello ini contoh post ketiga",
+      //     user_id: 3,
+      //     comments: [
+      //       {
+      //         user_id: "Thomas Shelby",
+      //         content: "good post!"
+      //       },
+      //       {
+      //         user_id: "Jane Doe",
+      //         content: "great!"
+      //       },
+      //     ],
+      //   },
+      // ],
 
     };
   },
@@ -215,6 +217,16 @@ export default {
         this.namaFollowers = response.data.data;
       })
 
+    },
+    readPosts() {
+      var url = this.$api + '/post/'
+      this.$http.get(url, {
+        headers: {
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+      }).then(response => {
+        this.posts = response.data.data;
+      })
     },
     profile() {
       this.$router.push({
@@ -236,6 +248,7 @@ export default {
 
   mounted() {
     this.readFollower();
+    this.readPosts();
   },
 };
 </script>
