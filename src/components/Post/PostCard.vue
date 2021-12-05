@@ -29,18 +29,18 @@
           >
             <v-col>
               <v-icon class="mr-1">
-                mdi-heart
+                
               </v-icon>
             </v-col>
             <v-col>
               <v-icon class="mr-1">
-                mdi-share-variant
+                mdi-comment
               </v-icon>
             </v-col>
           </v-row>
           <template v-slot:actions>
             <v-icon>
-              mdi-comment
+              
             </v-icon>
           </template>
         </v-expansion-panel-header>
