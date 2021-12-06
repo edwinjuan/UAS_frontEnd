@@ -71,9 +71,10 @@
     >
       <v-list-item-content>
         <PostCard
+            v-bind:id="post.id"
             v-bind:username="post.name"
             v-bind:post-content="post.post_content"
-            v-bind:comments="post.comments"
+            v-bind:comments="bindComment(post.id)"
         ></PostCard>
       </v-list-item-content>
     </v-list-item>
@@ -106,8 +107,10 @@ export default {
       namaFollowers: [],
       idUser: '',
       idPar: '',
-      posts:[],
+      posts:new Array(),
       comments: [],
+      post: [],
+      comment: '',
       // posts: [
       //   {
       //     id: 1,
@@ -218,6 +221,17 @@ export default {
       })
 
     },
+    readComments() {
+      var url = this.$api + '/comment/'
+      this.$http.get(url, {
+        headers: {
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+      }).then(response => {
+        this.comments = response.data.data;
+        
+      })
+    },
     readPosts() {
       var url = this.$api + '/post/'
       this.$http.get(url, {
@@ -226,7 +240,17 @@ export default {
         }
       }).then(response => {
         this.posts = response.data.data;
+    
       })
+    },
+    bindComment(id) {
+      let hasil = new Array();
+        for (let i=0; i<this.comments.length; i++) {
+            if (id === this.comments[i].post_id) {
+              hasil.push(this.comments[i]);
+            }
+        }
+        return hasil;
     },
     profile() {
       this.$router.push({
@@ -246,9 +270,10 @@ export default {
 
   },
 
-  mounted() {
+  created() {
     this.readFollower();
     this.readPosts();
+    this.readComments();
   },
 };
 </script>

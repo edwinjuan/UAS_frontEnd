@@ -50,11 +50,12 @@
         >
           <v-form>
             <v-text-field
+                v-model="newComment"
                 type="text"
                 placeholder="new comment..."
                 hint="type a new comment to this post"
             ></v-text-field>
-            <v-btn align="end"
+            <v-btn @click="createComment" align="end"
                    color="#26c6da"
                    type="submit"
             >
@@ -68,7 +69,7 @@
               v-for="(comment, i) in this.comments"
               :key="i">
             <Comment
-                v-bind:username="comment.user_id"
+                v-bind:username="comment.name"
                 v-bind:comment="comment.content"
             ></Comment>
           </div>
@@ -86,9 +87,37 @@ import Comment from "./Comment";
 
 export default {
   components: {Comment},
-  props: ['username', 'postContent', 'comments'],
-  name: "PostCard"
-}
+  props: ['id', 'username', 'postContent', 'comments'],
+  name: "PostCard",
+  data() {
+      return {
+        newComment: '',
+      };
+  },
+  methods: {
+      createComment() {
+          let idusercok = localStorage.getItem('id');
+          let newData= {
+                content : this.newComment,
+            };
+          var url = this.$api + '/comment/' + this.id + '/' + idusercok;
+          
+          this.$http.post(url, newData, {
+            headers: {
+              'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+          }).then(response => {
+            
+            
+        }).catch(error => {
+                alert(error.response.data.message);
+        });
+         alert("Comment Added");
+      },
+  },
+};
+
+
 </script>
 
 <style scoped>
