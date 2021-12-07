@@ -48,6 +48,7 @@ export default {
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
               }
             }).then(response => {
+              console.log(response.data.message);
               window.location.reload();
             }).catch(error => {
                     alert(error.response.data.message);
@@ -60,6 +61,7 @@ export default {
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
               }
             }).then(response => {
+              console.log(response.data.message);
               window.location.reload();
             }).catch(error => {
                     alert(error.response.data.message);

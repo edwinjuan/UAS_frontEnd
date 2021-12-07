@@ -111,100 +111,6 @@ export default {
       comments: [],
       post: [],
       comment: '',
-      // posts: [
-      //   {
-      //     id: 1,
-      //     post_content: "Hello ini contoh post pertama " +
-      //         "banyak hal yang harus dikerjakan " +
-      //         "bersama Tuhan kita pasti bisa. " +
-      //         "Amiinn.",
-      //     user_id: 1,
-      //     comments: [
-      //       {
-      //         user_id: "Thomas Shelby",
-      //         content: "good post!"
-      //       },
-      //       {
-      //         user_id: "Jane Doe",
-      //         content: "great!"
-      //       },
-      //       {
-      //         user_id: "Thomas Shelby",
-      //         content: "good post!"
-      //       },
-      //       {
-      //         user_id: "Jane Doe",
-      //         content: "great!"
-      //       },
-      //       {
-      //         user_id: "Thomas Shelby",
-      //         content: "good post!"
-      //       },
-      //       {
-      //         user_id: "Jane Doe",
-      //         content: "great!"
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     id: 2,
-      //     post_content: "Hello ini contoh post kedua",
-      //     user_id: 2,
-      //     comments: [],
-      //   },
-      //   {
-      //     id: 3,
-      //     post_content: "Hello ini contoh post ketiga",
-      //     user_id: 2,
-      //     comments: [
-      //       {
-      //         user_id: "Thomas Shelby",
-      //         content: "good post!"
-      //       },
-      //       {
-      //         user_id: "Jane Doe",
-      //         content: "great!"
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     id: 4,
-      //     post_content: "Hello ini contoh post pertama",
-      //     user_id: 4,
-      //     comments: [
-      //       {
-      //         user_id: "Thomas Shelby",
-      //         content: "good post!"
-      //       },
-      //       {
-      //         user_id: "Jane Doe",
-      //         content: "great!"
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     id: 5,
-      //     post_content: "Hello ini contoh post kedua",
-      //     user_id: 2,
-      //     comments: [],
-      //   },
-      //   {
-      //     id: 6,
-      //     post_content: "Hello ini contoh post ketiga",
-      //     user_id: 3,
-      //     comments: [
-      //       {
-      //         user_id: "Thomas Shelby",
-      //         content: "good post!"
-      //       },
-      //       {
-      //         user_id: "Jane Doe",
-      //         content: "great!"
-      //       },
-      //     ],
-      //   },
-      // ],
-
     };
   },
   methods: {
@@ -233,14 +139,15 @@ export default {
       })
     },
     readPosts() {
-      var url = this.$api + '/post/'
+      var url = this.$api + '/post'
       this.$http.get(url, {
         headers: {
           'Authorization': 'Bearer ' + localStorage.getItem('token')
         }
       }).then(response => {
+        // this.posts = response.data.data;
         this.posts = response.data.data;
-    
+        alert(this.posts[0].content);
       })
     },
     bindComment(id) {
