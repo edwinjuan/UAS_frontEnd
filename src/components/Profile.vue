@@ -73,7 +73,7 @@
 
         <v-list-item>
                 <div class="d-flex justify-center">
-                    <h5 class="black--text">Feedback</h5>
+                    <h5 class="black--text">Rating</h5>
                 </div>
             </v-list-item>
               

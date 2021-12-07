@@ -149,7 +149,6 @@ export default {
       }).then(response => {
         // this.posts = response.data.data;
         this.posts = response.data.data;
-        alert(this.posts[0].content);
       })
     },
     bindComment(id) {

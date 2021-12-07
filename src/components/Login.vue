@@ -29,15 +29,16 @@
         <v-container fluid fill-height class="posisinya">
             <v-layout flex align-center justify-center>
                     <v-flex x512 sm6 elevation-6>
+                        <h3 style="text-align:center; font-weight:bold">Rating</h3>
                         <v-list-item
-                            v-for="(feedback, i) in this.feedback"
+                            v-for="(feedback, i) in this.feedbacks"
                             :key="i"
                         >
                         <v-list-item-content>
                             <FeedbackCard
                                 v-bind:id="feedback.id"
                                 v-bind:username="feedback.name"
-                                v-bind:feedback_rating="feedback.feedback_rating"
+                                v-bind:feedback_star="feedback.feedback_star"
                                 v-bind:feedback_content="feedback.feedback_content"
                             ></FeedbackCard>
                         </v-list-item-content>
@@ -172,12 +173,9 @@ export default {
         readFeedback()
         {
             var url = this.$api + '/feedback/index'
-            this.$http.get(url, {
-                headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('token')
-                }
-            }).then(response => {
-                this.feedback = response.data.data;
+            alert(url);
+            this.$http.get(url).then(response => {
+                this.feedbacks = response.data.data;
             })
         },
 
@@ -212,5 +210,9 @@ export default {
             }
         }
     },
+    
+    mounted() {
+        this.readFeedback();
+  },
 };
 </script>

@@ -24,7 +24,7 @@
 
     <div v-else justify="center" class="text-xs-center">
         <v-text-field v-model="postContent" :disabled="disable" class="mx-5 text-h5 font-weight-bold shrink"></v-text-field>
-        <v-btn @click="updateApi" :hidden="hiden">Edit</v-btn>
+        <v-btn style="align-item:center" @click="updateApi" :hidden="hiden">Edit</v-btn>
     </div>
     <!--    comment section using expand panels -->
     <v-expansion-panels>
