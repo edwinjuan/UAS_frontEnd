@@ -147,12 +147,9 @@ export default {
       dateborn: '',
       username: '',
       password: '',
-<<<<<<< HEAD
-=======
       color: '',
       review: '',
       star: '',
->>>>>>> edeaa54cb591b7872c7582efb4cd5dc6a11369ca
       comments: [],
       status: 'edit',
       snackbar: false,
