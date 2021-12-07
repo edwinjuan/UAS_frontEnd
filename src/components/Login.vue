@@ -29,6 +29,25 @@
         <v-container fluid fill-height class="posisinya">
             <v-layout flex align-center justify-center>
                     <v-flex x512 sm6 elevation-6>
+                        <v-list-item
+                            v-for="(feedback, i) in this.feedback"
+                            :key="i"
+                        >
+                        <v-list-item-content>
+                            <FeedbackCard
+                                v-bind:id="feedback.id"
+                                v-bind:username="feedback.name"
+                                v-bind:feedback_rating="feedback.feedback_rating"
+                                v-bind:feedback_content="feedback.feedback_content"
+                            ></FeedbackCard>
+                        </v-list-item-content>
+                        </v-list-item>
+
+                        <v-snackbar v-model="snackbar" :color="color" timeout="2000" bottom>{{ error_message }}</v-snackbar>
+                    </v-flex>
+                </v-layout>
+            <v-layout flex align-center justify-center>
+                    <v-flex x512 sm6 elevation-6>
                         <v-toolbar class="grey darken-3">
                             <v-toolbar-title class="grey--text">
                                 <h1>Register</h1>
@@ -75,12 +94,18 @@
 </style>
 
 <script>
+//jangan lupa ubah
+import FeedbackCard from "./Post/FeedbackCard";
+
+
 export default {
     name: "Login",
+    components: {FeedbackCard},
     data() {
         return {
             emailLog: '',
             passwordLog: '',
+            feedbacks: new Array(),
             genderList: ['Pria', 'Wanita'],
             valid: false,
             name: '',
@@ -142,6 +167,18 @@ export default {
 
         clear() {
             this.$refs.form.reset() //clear form login
+        },
+
+        readFeedback()
+        {
+            var url = this.$api + '/feedback/index'
+            this.$http.get(url, {
+                headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            }).then(response => {
+                this.feedback = response.data.data;
+            })
         },
 
         register() {
