@@ -12,7 +12,7 @@
       >
         mdi-post
       </v-icon>
-      <span class="text-h6 font-weight-light"> Hello {{ username }}, with id: {{ user_id }}  Tell ur friends what you feel today :)</span>
+      <span class="text-h6 font-weight-light"> Hello {{ username }}, Tell your friends what you feel today :)</span>
     </v-card-title>
     <v-card-text>
       <v-textarea
