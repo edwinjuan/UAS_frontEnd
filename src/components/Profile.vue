@@ -86,7 +86,7 @@
                 ></v-select>
                                         
                 <v-layout justify-center>
-                    <div v-if="review != ''">
+                    <div v-if="review.length > 0">
                       <v-btn color="blue" @click="updateFeedback" :class="{ 'blue white--text' : valid, disable: !valid }">Update</v-btn>
                       <v-btn color="red" @click="deketeFeedback" :class="{ 'red white--text' : valid, disable: !valid }">Delete</v-btn>
                     </div>
