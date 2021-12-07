@@ -71,6 +71,8 @@
             <Comment
                 v-bind:username="comment.name"
                 v-bind:comment="comment.content"
+                v-bind:idComment="comment.id"
+                v-bind:idUser="comment.user_id"
             ></Comment>
           </div>
         </v-expansion-panel-content>
@@ -107,7 +109,7 @@ export default {
               'Authorization': 'Bearer ' + localStorage.getItem('token')
             }
           }).then(response => {
-            
+            console.log(response.data.message);
             
         }).catch(error => {
                 alert(error.response.data.message);

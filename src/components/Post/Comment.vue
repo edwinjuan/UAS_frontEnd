@@ -15,7 +15,11 @@
           </v-list-item-content>
         </v-row>
         <v-row class="">
-          <v-card-text>{{ comment }}</v-card-text>
+          <div class="d-flex">
+              <v-card-text class="pt-5 mr-2">{{ comment }}</v-card-text> 
+              <v-btn class="mr-1" @click="turnOnEdit" v-if="idUser==idPengguna">Edit</v-btn>
+              <v-btn @click="turnOnDelete" v-if="idUser==idPengguna">Delete</v-btn>
+          </div>
         </v-row>
       </v-col>
     </v-list-item>
@@ -24,8 +28,44 @@
 
 <script>
 export default {
-  props: ['username', 'comment'],
-  name: "Comment"
+  props: ['username', 'comment', 'idComment', 'idUser'],
+  name: "Comment",
+  data() {
+      return {
+        idPengguna: localStorage.getItem('id'),
+      };
+  },
+  methods: {
+      turnOnEdit() {
+          let text = prompt("New Comment: ");
+          let newData= {
+                content : text,
+            };
+          var url = this.$api + '/comment/' + this.idComment;
+          
+          this.$http.put(url, newData, {
+              headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+              }
+            }).then(response => {
+              window.location.reload();
+            }).catch(error => {
+                    alert(error.response.data.message);
+            });
+      },
+      turnOnDelete() {
+          var url = this.$api + '/comment/' + this.idComment;
+          this.$http.delete(url,{
+              headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+              }
+            }).then(response => {
+              window.location.reload();
+            }).catch(error => {
+                    alert(error.response.data.message);
+            });
+      },
+  },
 }
 </script>
 

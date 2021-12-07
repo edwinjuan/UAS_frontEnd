@@ -78,6 +78,8 @@
         ></PostCard>
       </v-list-item-content>
     </v-list-item>
+
+    <v-snackbar v-model="snackbar" color="blue" timeout="2000" bottom>Masuk sini</v-snackbar>
   </main>
 </template>
 
@@ -100,8 +102,6 @@ export default {
     return {
       load: false,
       snackbar: false,
-      error_message: '',
-      color: '',
       valid: false,
       name: '',
       namaFollowers: [],
