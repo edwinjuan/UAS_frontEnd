@@ -75,6 +75,7 @@
             v-bind:username="post.name"
             v-bind:post-content="post.post_content"
             v-bind:comments="bindComment(post.id)"
+            v-bind:status="status"
         ></PostCard>
       </v-list-item-content>
     </v-list-item>
@@ -107,6 +108,7 @@ export default {
       namaFollowers: [],
       idUser: '',
       idPar: '',
+      status: 'show',
       posts:new Array(),
       comments: [],
       post: [],

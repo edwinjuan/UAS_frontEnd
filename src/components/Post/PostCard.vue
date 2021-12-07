@@ -13,9 +13,19 @@
         mdi-account-circle
       </v-icon>
       <span class="text-h6 font-weight-light">{{ username }}</span>
+      <v-spacer></v-spacer>
+      <div>
+          <v-icon @click="updatePost" class="mr-2" v-if="status==='edit'">mdi-pencil</v-icon>
+          <v-icon @click="deletePost" v-if="status==='edit'">mdi-delete</v-icon>
+      </div>
     </v-card-title>
 
-    <v-card-text class="text-h5 font-weight-bold"> {{ postContent }}</v-card-text>
+    <v-card-text v-if="status==='show'" class="text-h5 font-weight-bold"> {{ postContent }}</v-card-text>
+
+    <div v-else justify="center" class="text-xs-center">
+        <v-text-field v-model="postContent" :disabled="disable" class="mx-5 text-h5 font-weight-bold shrink"></v-text-field>
+        <v-btn @click="updateApi" :hidden="hiden">Edit</v-btn>
+    </div>
     <!--    comment section using expand panels -->
     <v-expansion-panels>
       <v-expansion-panel
@@ -89,11 +99,13 @@ import Comment from "./Comment";
 
 export default {
   components: {Comment},
-  props: ['id', 'username', 'postContent', 'comments'],
+  props: ['id', 'username', 'postContent', 'comments', 'status'],
   name: "PostCard",
   data() {
       return {
         newComment: '',
+        disable: true,
+        hiden: true,
       };
   },
   methods: {
@@ -115,6 +127,62 @@ export default {
                 alert(error.response.data.message);
         });
          alert("Comment Added");
+      },
+      deletePostApi() {
+          var url = this.$api + '/post/' + this.id;
+          
+          this.$http.delete(url,{
+            headers: {
+              'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+          }).then(response => {
+            console.log(response.data.message);
+          }).catch(error => {
+                  alert(error.response.data.message);
+          });
+      },
+      deleteCommentPost() {
+          var url = this.$api + '/comment/post/' + this.id;
+          
+          this.$http.delete(url,{
+            headers: {
+              'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+          }).then(response => {
+            console.log(response.data.message);
+          }).catch(error => {
+                  alert(error.response.data.message);
+          });
+      },
+      deletePost() {
+         this.deleteCommentPost();
+         this.deletePostApi();
+         alert("Post berhasil dihapus");
+         window.location.reload();
+      },
+      updatePost() {
+        this.hiden = false;
+        this.disable =  false;
+      },
+      updateApi() {
+          let newData= {
+              post_content : this.postContent,
+          };
+          var url = this.$api + '/post/' + this.id;
+          
+          this.$http.put(url, newData, {
+            headers: {
+              'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+          }).then(response => {
+            console.log(response.data.message);
+            this.hiden = true;
+            this.disable =  true;
+            alert("Post Edited");
+            window.location.reload();
+        }).catch(error => {
+                alert(error.response.data.message);
+        });
       },
   },
 };

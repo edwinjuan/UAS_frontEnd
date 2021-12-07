@@ -89,6 +89,7 @@
             v-bind:username="post.name"
             v-bind:post-content="post.post_content"
             v-bind:comments="bindComment(post.id)"
+            v-bind:status="status"
         ></PostCard>
       </v-list-item-content>
     </v-list-item>
@@ -117,8 +118,8 @@ export default {
       dateborn: '',
       username: '',
       password: '',
-      color: '',
       comments: [],
+      status: 'edit',
       snackbar: false,
       error_message: '',
       nameRules: [
