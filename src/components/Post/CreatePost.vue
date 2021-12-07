@@ -60,6 +60,7 @@ export default {
         }
       }).then(response => {
         alert(response.data.message);
+        window.location.reload();
       })
     },
   }
