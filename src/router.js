@@ -39,7 +39,11 @@ const router = new VueRouter({
 // Set Judul
 router.beforeEach((to, from ,next) => {
     document.title = to.meta.title;
-    next();
+    if(to.name !== "Login" && localStorage.getItem("token") == null) {
+        next({name: 'Login'});
+    } else {
+        next();
+    }
 });
 
 export default router;

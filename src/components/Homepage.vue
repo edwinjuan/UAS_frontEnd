@@ -13,7 +13,7 @@
               </v-text-field>
             </v-col>
             <v-col cols="6" sm="3">
-              <v-btn color="grey" class="mt-2 d-flex align-center" rounded darken @click="cari">Cari!</v-btn>
+              <v-btn color="grey" class="mt-2 d-flex align-center" rounded darken @click="logout">Logout</v-btn>
             </v-col>
             <v-col cols="6" sm="1">
               <v-btn color="blue" class="mt-2 d-flex align-center" rounded darken @click="profile">
@@ -48,20 +48,36 @@
           <v-list-item-title class="black--text"> FOLLOWERS</v-list-item-title>
         </v-list-item>
 
+        <v-list-item>
+          <v-list-item-avatar>
+            <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
+          </v-list-item-avatar>
 
-        <v-list-item
-            v-for="(follower, i) in this.namaFollowers"
-            :key="i"
-            link
-        >
-          <v-list-item-icon>
-            <v-icon class="black">mdi-account-multiple-outline</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title class="black--text">{{ follower }}</v-list-item-title>
-          </v-list-item-content>
+          <v-list-item-title class="black--text">John Leider</v-list-item-title>
         </v-list-item>
+        <v-list-item>
+          <v-list-item-avatar>
+            <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
+          </v-list-item-avatar>
+
+          <v-list-item-title class="black--text">John Leider</v-list-item-title>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-avatar>
+            <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
+          </v-list-item-avatar>
+
+          <v-list-item-title class="black--text">John Leider</v-list-item-title>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-avatar>
+            <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
+          </v-list-item-avatar>
+
+          <v-list-item-title class="black--text">John Leider</v-list-item-title>
+        </v-list-item>
+
+        
       </v-list>
     </v-navigation-drawer>
 
@@ -175,6 +191,12 @@ export default {
         return response.data.data['name'];
       })
     },
+
+    logout() {
+			localStorage.removeItem('id');
+      localStorage.removeItem('token');
+      location.reload();
+		},
 
   },
 

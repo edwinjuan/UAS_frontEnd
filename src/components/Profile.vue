@@ -13,7 +13,7 @@
               </v-text-field>
             </v-col>
             <v-col cols="6" sm="3">
-              <v-btn color="grey" class="mt-2 d-flex align-center" rounded darken @click="cari">Cari!</v-btn>
+              <v-btn color="grey" class="mt-2 d-flex align-center" rounded darken @click="logout">Logout</v-btn>
             </v-col>
             <v-col cols="6" sm="1">
               <v-btn color="blue" class="mt-2 d-flex align-center" rounded darken @click="profile">
@@ -322,6 +322,12 @@ export default {
         this.snackbar = true;
       });
     },
+
+    logout() {
+			localStorage.removeItem('id');
+      localStorage.removeItem('token');
+      location.reload();
+		},
 
     update() {
       let newData = {

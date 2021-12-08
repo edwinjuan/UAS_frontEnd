@@ -150,8 +150,6 @@ export default {
             }
           }).then(response => {
             console.log(response.data.message);
-          }).catch(error => {
-                  alert(error.response.data.message);
           });
       },
       deletePost() {

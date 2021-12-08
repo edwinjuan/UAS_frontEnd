@@ -172,8 +172,7 @@ export default {
 
         readFeedback()
         {
-            var url = this.$api + '/feedback/index'
-            alert(url);
+            var url = this.$api + '/feedback/index';
             this.$http.get(url).then(response => {
                 this.feedbacks = response.data.data;
             })
