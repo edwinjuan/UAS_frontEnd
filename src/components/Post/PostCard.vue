@@ -22,7 +22,7 @@
 
     <v-card-text v-if="status==='show'" class="text-h5 font-weight-bold"> {{ postContent }}</v-card-text>
 
-    <div v-else justify="center" class="text-xs-center">
+    <div v-else style="background-color:red; display:flex; flex:row" justify="center" class="text-xs-center">
         <v-text-field v-model="postContent" :disabled="disable" class="mx-5 text-h5 font-weight-bold shrink"></v-text-field>
         <v-btn style="align-item:center" @click="updateApi" :hidden="hiden">Edit</v-btn>
     </div>

@@ -246,7 +246,6 @@ export default {
           } else {
               this.cekEdit = true;
               this.review = response.data.data['feedback_content'];
-              alert(response.data.message);
               this.star = response.data.data['feedback_star'];
           }
       })
