@@ -12,7 +12,7 @@
       >
         mdi-post
       </v-icon>
-      <span class="text-h6 font-weight-light"> Hello {{ username }}, Tell your friends what you feel today :)</span>
+      <span class="text-h6 font-weight-light"> Hello {{ username }}, Tell your friends what you feel today :) {{content}}</span>
     </v-card-title>
     <v-card-text>
       <v-textarea
@@ -41,7 +41,7 @@
 <script>
 export default {
   name: "CreatePost",
-  props: ['username','user_id'],
+  props: ['username','user_id','content'],
   data() {
     return {
       inputPost: '',
