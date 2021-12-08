@@ -81,11 +81,7 @@
 </template>
 
 <style>
-    @import url("https://fonts.googleapis.com/css?family=Jolly%20Lodger");
-    .grey--text{
-        font-family: "Jolly Lodger";
-    }
-
+    
     .posisinya{
         position: absolute;
         top: 60px;
