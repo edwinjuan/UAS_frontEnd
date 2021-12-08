@@ -82,13 +82,13 @@
               
             <v-form v-model="valid" ref="form">
                 <v-text-field v-model="review" :rules="reviewRules" outlined required label="Review" type="text"></v-text-field>
-                <v-select v-model="star" color="black" item-color="black" :rules="starRules" :items="starList" label="Star" outlined
+                <v-select v-model="star"  color="black" item-color="black" :rules="starRules" :items="starList" label="Star" outlined
                 ></v-select>
                                         
                 <v-layout justify-center>
-                    <div v-if="review.length > 0">
+                    <div v-if="cekEdit === true">
                       <v-btn color="blue" @click="updateFeedback" :class="{ 'blue white--text' : valid, disable: !valid }">Update</v-btn>
-                      <v-btn color="red" @click="deketeFeedback" :class="{ 'red white--text' : valid, disable: !valid }">Delete</v-btn>
+                      <v-btn color="red" @click="deleteFeedback" :class="{ 'red white--text' : valid, disable: !valid }">Delete</v-btn>
                     </div>
                     <div v-else>
                       <v-btn color="green" @click="createFeedback" :class="{ 'green white--text' : valid, disable: !valid }">Create</v-btn>
@@ -148,6 +148,7 @@ export default {
       username: '',
       password: '',
       color: '',
+      cekEdit: false,
       review: '',
       star: '',
       comments: [],
@@ -175,7 +176,7 @@ export default {
       starRules: [
         (v) => !!v || 'Star tidak boleh kosong :,(',
       ],
-      starList: ['1', '2', '3', '4', '5'],
+      starList: [1, 2, 3, 4, 5],
     };
   },
   methods: {
@@ -240,8 +241,14 @@ export default {
         'Authorization' : 'Bearer ' + localStorage.getItem('token')
       }
       }).then(response => {
-        this.review = response.data.data['feedback_content'];
-        this.star = response.data.data['feedback_star'];
+        if (response.data.data == null) {
+              this.cekEdit = false;
+          } else {
+              this.cekEdit = true;
+              this.review = response.data.data['feedback_content'];
+              alert(response.data.message);
+              this.star = response.data.data['feedback_star'];
+          }
       })
     },
 
@@ -261,14 +268,11 @@ export default {
         this.error_message = response.data.message;
         this.color = "green";
         this.snackbar = true;
-        this.load = false;
-        this.close();
         this.readFeedback();
       }).catch(error => {
         this.error_message = error.response.data.message;
         this.color = "red";
         this.snackbar = true;
-        this.load = false;
       });
     },
 
@@ -277,9 +281,45 @@ export default {
 
       var url = this.$api + '/feedback/' + this.idUser;
       this.$http.delete(url, {
-      headers: {
-        'Authorization' : 'Bearer ' + localStorage.getItem('token')
+        headers: {
+          'Authorization' : 'Bearer ' + localStorage.getItem('token')
+        }
+      }).then(response =>{
+        this.error_message = response.data.message;
+        this.color = "green";
+        this.snackbar = true;
+        this.cekEdit = false;
+        this.star = '';
+        this.review = '';
+        this.readFeedback();
+      }).catch(error => {
+        this.error_message = error.response.data.message;
+        this.color = "red";
+        this.snackbar = true;
+      });
+    },
+
+    createFeedback() {
+        let newData = {
+        feedback_content: this.review,
+        feedback_star: this.star,
+        user_id: localStorage.getItem('id'),
       }
+
+      var url = this.$api + '/feedback';
+      this.$http.post(url, newData, {
+        headers: {
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+      }).then(response => {
+        this.error_message = response.data.message;
+        this.color = "green";
+        this.snackbar = true;
+        this.readFeedback();
+      }).catch(error => {
+        this.error_message = error.response.data.message;
+        this.color = "red";
+        this.snackbar = true;
       });
     },
 
@@ -304,7 +344,6 @@ export default {
         this.color = "green";
         this.snackbar = true;
         this.load = false;
-        this.close();
         this.readProfile(); // baca data
       }).catch(error => {
         this.error_message = error.response.data.message;
